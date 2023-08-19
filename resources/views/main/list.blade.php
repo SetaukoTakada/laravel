@@ -1,0 +1,34 @@
+@extends('main.layout')
+@section('title','つぶやき一覧')
+
+<!--つぶやき投稿-->
+@section('content')
+<h1>ホーム</h1>
+<section class="tweet">
+  <from action="/main" method="post">
+<input type="text" class="textbox" placeholder=いまどうしてる？>
+<br>
+<input type="submit" class="tweetbutton" value="つぶやく">
+  </from>
+</section>  
+@endsection
+
+<!--投稿一覧表示  -->
+@section('comment')
+<div class="main">
+<div class="tweetbox">
+  @foreach ($posts as $post)    
+  <div class="userid">{{$post->user_id}}</div>
+  <div class="created_at">{{$post->created_at}}</div>
+</div>
+<div class="body">{{$post->body}}</div>
+</div>
+  @endforeach
+
+<div>{{$request->user_id}}</div>
+
+ 
+
+
+
+@endsection
